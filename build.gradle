@@ -29,6 +29,14 @@ repositories {
 
 
 dependencies {
+	compile('org.springframework:spring-context:5.0.0.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-web-services')
+	
+	// will be using for naming parameters instead of using numbers
+	compile('org.jtemplate:jtemplate:1.8')
+	
+	runtime('mysql:mysql-connector-java:5.1.43')
+	
+	testCompile('junit:junit:4.12')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
