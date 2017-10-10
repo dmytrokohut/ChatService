@@ -4,12 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+import com.dkohut.chatservice.common.interfaces.EntityCreator;
+
 /**
  * 
  * @author Dmytro Kohut
  *
  */
-public class ChatRoom {
+public class ChatRoom implements EntityCreator {
 	
 	private Integer id;
 	private String name;
@@ -23,12 +25,10 @@ public class ChatRoom {
 	}
 	
 	/**
-	 * This constructor will be used in DAO methods.
-	 * 
-	 * @param ResultSet resultSet
-	 * @throws SQLException 
+	 * @see com.dkohut.chatservice.common.interfaces.EntityCreator#fillFields(ResultSet)
 	 */
-	public ChatRoom(ResultSet resultSet) throws SQLException {
+	@Override
+	public void fillFields(ResultSet resultSet) throws SQLException {
 		this.id = resultSet.getInt("id");
 		this.name = resultSet.getString("name");
 		this.createdAt = resultSet.getTimestamp("created_at");
@@ -56,6 +56,6 @@ public class ChatRoom {
 
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = Timestamp.valueOf(createdAt);
-	}
+	}	
 	
 }

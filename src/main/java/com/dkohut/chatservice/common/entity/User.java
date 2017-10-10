@@ -3,12 +3,14 @@ package com.dkohut.chatservice.common.entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.dkohut.chatservice.common.interfaces.EntityCreator;
+
 /**
  * 
  * @author Dmytro Kohut
  *
  */
-public class User {
+public class User implements EntityCreator {
 
 	private Integer id;
 	private String name;
@@ -21,20 +23,18 @@ public class User {
 	 */
 	public User() {
 		// default constructor
-	}
-	
+	}	
+
 	/**
-	 * This constructor will be used in DAO methods.
-	 * 
-	 * @param ResultSet resultSet
-	 * @throws SQLException 
+	 * @see com.dkohut.chatservice.common.interfaces.EntityCreator#fillFields(ResultSet)
 	 */
-	public User(ResultSet resultSet) throws SQLException {
+	@Override
+	public void fillFields(ResultSet resultSet) throws SQLException {
 		this.id = resultSet.getInt("id");
 		this.name = resultSet.getString("name");
 		this.login = resultSet.getString("login");
 		this.password = resultSet.getString("password");
-		this.email = resultSet.getString("email");
+		this.email = resultSet.getString("email");		
 	}
 
 	public Integer getId() {
