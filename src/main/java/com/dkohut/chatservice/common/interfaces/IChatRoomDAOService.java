@@ -12,7 +12,7 @@ import com.dkohut.chatservice.common.entity.ChatRoom;
 public interface IChatRoomDAOService {
 
 	/**
-	 * Select chat rooms in given range.
+	 * Select chat rooms in given range, sorted by created_at column.
 	 * 
 	 * @param Integer firstRow
 	 * @param Integer numberOfRows 
@@ -45,7 +45,7 @@ public interface IChatRoomDAOService {
 	String update(ChatRoom chatRoom);
 	
 	/**
-	 * Delete chat room.
+	 * Delete chat room with given id.
 	 * 
 	 * @param Integer id
 	 * @return String

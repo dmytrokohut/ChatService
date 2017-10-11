@@ -12,7 +12,7 @@ import com.dkohut.chatservice.common.entity.Message;
 public interface IMessageDAOService {
 
 	/**
-	 * Select messages of one chat in given range.
+	 * Select messages of one chat in given range, sorted by created_at column.
 	 * 
 	 * @param Integer firstRow
 	 * @param Integer numberOfRows
