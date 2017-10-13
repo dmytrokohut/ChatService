@@ -19,22 +19,22 @@ public interface IMessageDAOService {
 	 * @param Integer chatRoomId
 	 * @return List<Messages> 
 	 */
-	List<Message> select(Integer firstRow, Integer numberOfRows, Integer chatRoomId);
+	List<Message> selectSpecifiedMessagesOfChatRoom(Integer firstRow, Integer numberOfRows, Integer chatRoomId);
 	
 	/**
 	 * Create new message.
 	 * 
 	 * @param Message message
-	 * @return Integer id
+	 * @return Message
 	 */
-	Integer create(Message message);
+	Message create(Message message);
 	
 	/**
 	 * Delete existing message.
 	 * 
 	 * @param Integer id
-	 * @return String
+	 * @return Boolean
 	 */
-	String delete(Integer id);
+	Boolean delete(Integer id);
 	
 }

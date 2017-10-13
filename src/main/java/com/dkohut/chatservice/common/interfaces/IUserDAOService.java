@@ -23,7 +23,7 @@ public interface IUserDAOService {
 	 * @param User user
 	 * @return Integer
 	 */
-	Integer create(User user);
+	User create(User user);
 	
 	/**
 	 * Update existing user.
@@ -31,7 +31,7 @@ public interface IUserDAOService {
 	 * @param User user
 	 * @return String
 	 */
-	String update(User user);
+	User update(User user);
 	
 	/**
 	 * Delete user with given id.
@@ -39,6 +39,6 @@ public interface IUserDAOService {
 	 * @param Integer id
 	 * @return String
 	 */
-	String delete(Integer id);
+	Boolean delete(Integer id);
 	
 }
