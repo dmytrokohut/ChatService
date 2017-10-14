@@ -19,7 +19,15 @@ public interface IMessageDAOService {
 	 * @param Integer chatRoomId
 	 * @return List<Messages> 
 	 */
-	List<Message> selectSpecifiedMessagesOfChatRoom(Integer firstRow, Integer numberOfRows, Integer chatRoomId);
+	List<Message> getSpecifiedMessagesOfChatRoom(Integer firstRow, Integer numberOfRows, Integer chatRoomId);
+	
+	/**
+	 * Select message by given id.
+	 * 
+	 * @param Integer id
+	 * @return Message
+	 */
+	Message getById(Integer id);
 	
 	/**
 	 * Create new message.

@@ -18,7 +18,7 @@ public interface IChatRoomDAOService {
 	 * @param Integer numberOfRows 
 	 * @return List<ChatRoom>
 	 */
-	List<ChatRoom> selectSpecifiedNumberOfRows(Integer firstRow, Integer numberOfRows);
+	List<ChatRoom> getSpecifiedNumberOfRows(Integer firstRow, Integer numberOfRows);
 	
 	/**
 	 * Select chat room with given id.
@@ -26,15 +26,15 @@ public interface IChatRoomDAOService {
 	 * @param Integer id 
 	 * @return ChatRoom
 	 */
-	ChatRoom selectById(Integer id);
+	ChatRoom getById(Integer id);
 	
 	/**
 	 * Create new chat room.
 	 * 
-	 * @param ChatRoom chatRoom
+	 * @param Sring name
 	 * @return ChatRoom
 	 */
-	ChatRoom create(ChatRoom chatRoom);
+	ChatRoom create(String name);
 	
 	/**
 	 * Update existing chat room.

@@ -15,7 +15,7 @@ public interface IUserDAOService {
 	 * @param Integer id
 	 * @return User
 	 */
-	User select(Integer id);
+	User getById(Integer id);
 	
 	/**
 	 * Create new user.
