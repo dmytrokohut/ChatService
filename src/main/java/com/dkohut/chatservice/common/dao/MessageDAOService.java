@@ -73,7 +73,7 @@ public class MessageDAOService implements IMessageDAOService {
 			parameters.put(CHAT_ROOM_ID, chatRoomId);
 			parameters.apply(statement);
 			
-			ResultSet resultSet = statement.getResultSet();
+			ResultSet resultSet = statement.executeQuery();
 			
 			List<Message> listOfMessages = new ArrayList<>();
 			
