@@ -26,11 +26,11 @@ import com.dkohut.chatservice.common.interfaces.IMessageDAOService;
 public class MessageDAOService implements IMessageDAOService {
 
 	private static final String ID = "id";
-	private static final String CHAT_ROOM_ID = "chatRoomId";
 	private static final String USER_ID = "userId";
 	private static final String MESSAGE = "message";
-	private static final String NUMBER_OF_ROWS = "numberOfRows";
 	private static final String FIRST_ROW = "firstRow";
+	private static final String CHAT_ROOM_ID = "chatRoomId";
+	private static final String NUMBER_OF_ROWS = "numberOfRows";	
 	
 	private static final String QUERY_SELECT_SPECIFIED_MESSAGES = "SELECT id, chat_room_id, user_id, message, created_at "
 						+ "FROM messages WHERE chat_room_id=:chatRoomId ORDER BY created_at LIMIT :numberOfRows OFFSET :firstRow";
@@ -83,7 +83,7 @@ public class MessageDAOService implements IMessageDAOService {
 			
 			return listOfMessages;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -110,7 +110,7 @@ public class MessageDAOService implements IMessageDAOService {
 			
 			return Message.getMessage(resultSet);
 			
-		} catch(NullPointerException | SQLException e ) {
+		} catch(SQLException e ) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -142,7 +142,7 @@ public class MessageDAOService implements IMessageDAOService {
 			
 			return getById(generatedId.getInt(1));
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -168,7 +168,7 @@ public class MessageDAOService implements IMessageDAOService {
 			
 			return true;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}

@@ -54,6 +54,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 		}				
 	}
 	
+	
 	/**
 	 * @see com.dkohut.chatservice.common.interfaces.IChatRoomDAOService#getSpecifiedNumberOfRows(Integer, Integer)
 	 */
@@ -79,7 +80,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 		
 			return listOfChatRooms;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -106,7 +107,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			
 			return ChatRoom.getChatRoom(resultSet);
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -136,7 +137,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			
 			return getById(generatedId.getInt(1));
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -163,7 +164,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			
 			return getById(chatRoom.getId());
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -189,7 +190,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			
 			return true;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}

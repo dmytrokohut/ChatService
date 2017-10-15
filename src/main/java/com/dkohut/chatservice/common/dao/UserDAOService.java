@@ -52,6 +52,19 @@ public class UserDAOService implements IUserDAOService {
 		}		
 	}
 
+	
+	private void setParameters(Parameters parameters, String name, String login, String password, String email) {
+		parameters.put(NAME, name);
+		parameters.put(LOGIN, login);
+		parameters.put(PASSWORD, password);
+		parameters.put(EMAIL, email);
+	}
+	
+	
+	private void setParameterId(Parameters parameters, Integer id) {		
+		parameters.put(ID, id);
+	}
+	
 
 	/**
 	 * @see com.dkohut.chatservice.common.interfaces.IUserDAOService#getById(Integer)
@@ -64,7 +77,7 @@ public class UserDAOService implements IUserDAOService {
 			
 			PreparedStatement statement = connection.prepareStatement(parameters.getSQL());
 			
-			parameters.put(ID, id);
+			setParameterId(parameters, id);
 			parameters.apply(statement);
 			
 			ResultSet resultSet = statement.executeQuery();
@@ -72,7 +85,7 @@ public class UserDAOService implements IUserDAOService {
 			
 			return User.getUser(resultSet);
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -91,10 +104,7 @@ public class UserDAOService implements IUserDAOService {
 			
 			PreparedStatement statement = connection.prepareStatement(parameters.getSQL(), Statement.RETURN_GENERATED_KEYS);
 			
-			parameters.put(NAME, user.getName());
-			parameters.put(LOGIN, user.getLogin());
-			parameters.put(PASSWORD, user.getPassword());
-			parameters.put(EMAIL, user.getEmail());
+			setParameters(parameters, user.getName(), user.getLogin(), user.getPassword(), user.getEmail());
 			parameters.apply(statement);
 			
 			statement.execute();
@@ -107,7 +117,7 @@ public class UserDAOService implements IUserDAOService {
 			
 			return user;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}		
@@ -126,18 +136,15 @@ public class UserDAOService implements IUserDAOService {
 			
 			PreparedStatement statement = connection.prepareStatement(parameters.getSQL());
 			
-			parameters.put(NAME, user.getName());
-			parameters.put(LOGIN, user.getLogin());
-			parameters.put(PASSWORD, user.getPassword());
-			parameters.put(EMAIL, user.getEmail());
-			parameters.put(ID, user.getId());
+			setParameters(parameters, user.getName(), user.getLogin(), user.getPassword(), user.getEmail());
+			setParameterId(parameters, user.getId());
 			parameters.apply(statement);
 			
 			statement.execute();
 			
 			return user;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
@@ -156,14 +163,14 @@ public class UserDAOService implements IUserDAOService {
 			
 			PreparedStatement statement = connection.prepareStatement(parameters.getSQL());
 			
-			parameters.put(ID, id);
+			setParameterId(parameters, id);
 			parameters.apply(statement);
 			
 			statement.execute();
 			
 			return true;
 			
-		} catch(NullPointerException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}
