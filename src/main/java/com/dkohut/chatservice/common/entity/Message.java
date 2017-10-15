@@ -4,14 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import com.dkohut.chatservice.common.interfaces.EntityCreator;
-
 /**
  * 
  * @author Dmytro Kohut
  *
  */
-public class Message implements EntityCreator {
+public class Message {
 
 	private Integer id;
 	private Integer chatRoomId;
@@ -27,15 +25,14 @@ public class Message implements EntityCreator {
 	}
 	
 	/**
-	 * @see com.dkohut.chatservice.common.interfaces.EntityCreator#fillFields(ResultSet)
+	 * This constructor will be using in static method.
 	 */
-	@Override
-	public void fillFields(ResultSet resultSet) throws SQLException {
-		this.id = resultSet.getInt("id");
-		this.chatRoomId = resultSet.getInt("chat_room_id");
-		this.userId = resultSet.getInt("user_id");
-		this.message = resultSet.getString("message");
-		this.createdAt = resultSet.getTimestamp("created_at");
+	public Message(Integer id, Integer chatRoomId, Integer userId, String message, Timestamp createdAt) {
+		this.id = id;
+		this.chatRoomId = chatRoomId;
+		this.userId = userId;
+		this.message = message;
+		this.createdAt = createdAt;
 	}
 
 	public Integer getId() {
@@ -77,5 +74,17 @@ public class Message implements EntityCreator {
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = Timestamp.valueOf(createdAt);
 	}	
+	
+	/**
+	 * Create new object using ResultSet for filling fields.
+	 * 
+	 * @param ResultSet resultSet
+	 * @return Message
+	 * @throws SQLException 
+	 */
+	public static Message getMessage(ResultSet resultSet) throws SQLException {
+		return new Message(resultSet.getInt("id"), resultSet.getInt("chat_room_id"), resultSet.getInt("user_id"),
+				resultSet.getString("message"), resultSet.getTimestamp("created_at"));
+	}
 	
 }

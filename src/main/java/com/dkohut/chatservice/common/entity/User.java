@@ -3,14 +3,12 @@ package com.dkohut.chatservice.common.entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.dkohut.chatservice.common.interfaces.EntityCreator;
-
 /**
  * 
  * @author Dmytro Kohut
  *
  */
-public class User implements EntityCreator {
+public class User {
 
 	private Integer id;
 	private String name;
@@ -26,15 +24,14 @@ public class User implements EntityCreator {
 	}	
 
 	/**
-	 * @see com.dkohut.chatservice.common.interfaces.EntityCreator#fillFields(ResultSet)
+	 * This constructor will be using in static method.
 	 */
-	@Override
-	public void fillFields(ResultSet resultSet) throws SQLException {
-		this.id = resultSet.getInt("id");
-		this.name = resultSet.getString("name");
-		this.login = resultSet.getString("login");
-		this.password = resultSet.getString("password");
-		this.email = resultSet.getString("email");		
+	public User(Integer id, String name, String login, String password, String email) {
+		this.id = id;
+		this.name = name;
+		this.login = login;
+		this.password = password;
+		this.email = email;
 	}
 
 	public Integer getId() {
@@ -75,6 +72,18 @@ public class User implements EntityCreator {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	/**
+	 * Create new object using ResultSet for filling fields.
+	 * 
+	 * @param ResultSet resultSet
+	 * @return User
+	 * @throws SQLException 
+	 */
+	public static User getUser(ResultSet resultSet) throws SQLException {
+		return new User(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("login"), 
+				resultSet.getString("password"), resultSet.getString("email"));
 	}
 	
 }
