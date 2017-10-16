@@ -1,7 +1,6 @@
 package com.dkohut.chatservice.common.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.jtemplate.sql.Parameters;
 import org.springframework.stereotype.Repository;
 
+import com.dkohut.chatservice.common.connection.ConnectionResource;
 import com.dkohut.chatservice.common.entity.User;
 import com.dkohut.chatservice.common.interfaces.IUserDAOService;
 
@@ -38,19 +38,7 @@ public class UserDAOService implements IUserDAOService {
 	
 	private static final Logger logger = Logger.getLogger(UserDAOService.class);
 	
-	private static Connection connection;
-	
-	
-	static {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chats", "root", "root");
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.error(e);
-			throw new RuntimeException(e);
-		}		
-	}
+	private Connection connection = ConnectionResource.getConnection();
 
 	
 	private void setParameters(Parameters parameters, String name, String login, String password, String email) {
