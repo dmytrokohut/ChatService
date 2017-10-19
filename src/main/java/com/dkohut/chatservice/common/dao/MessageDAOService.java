@@ -152,7 +152,7 @@ public class MessageDAOService implements IMessageDAOService {
 			parameters.put(ID, id);
 			parameters.apply(statement);
 			
-			statement.execute();
+			statement.executeUpdate();
 			
 			return true;
 			

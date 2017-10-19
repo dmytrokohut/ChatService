@@ -13,7 +13,7 @@ import com.dkohut.chatservice.common.interfaces.IUserDAOService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserDAOServiceTest {
+public class UserDAOServiceIntegrationTest {
 
 	@Autowired
 	private IUserDAOService userDAOService;

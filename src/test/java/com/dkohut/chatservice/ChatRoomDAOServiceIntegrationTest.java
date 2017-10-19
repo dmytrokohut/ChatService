@@ -20,7 +20,7 @@ import com.dkohut.chatservice.common.interfaces.IChatRoomDAOService;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ChatRoomDAOServiceTest {
+public class ChatRoomDAOServiceIntegrationTest {
 
 	@Autowired
 	private IChatRoomDAOService chatRoomDAOService;

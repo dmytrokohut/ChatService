@@ -20,7 +20,7 @@ import com.dkohut.chatservice.common.interfaces.IMessageDAOService;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MessageDAOServiceTest {
+public class MessageDAOServiceIntegrationTest {
 
 	@Autowired
 	private IMessageDAOService messageDAOService;

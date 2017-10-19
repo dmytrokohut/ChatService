@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
  */
 public class ConnectionResource {
 
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/chats";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "root";
@@ -28,10 +27,9 @@ public class ConnectionResource {
 
 	static {		
 		try {
-			Class.forName(DRIVER);
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			
-		} catch(ClassNotFoundException | SQLException e) {
+		} catch(SQLException e) {
 			logger.error(e);
 			throw new RuntimeException(e);
 		}

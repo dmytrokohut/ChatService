@@ -148,7 +148,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			parameters.put(NAME, chatRoom.getName());
 			parameters.apply(statement);
 			
-			statement.execute();
+			statement.executeUpdate();
 			
 			return getById(chatRoom.getId());
 			
@@ -174,7 +174,7 @@ public class ChatRoomDAOService implements IChatRoomDAOService {
 			parameters.put(ID, id);
 			parameters.apply(statement);
 			
-			statement.execute();
+			statement.executeUpdate();
 			
 			return true;
 			

@@ -128,7 +128,7 @@ public class UserDAOService implements IUserDAOService {
 			setParameterId(parameters, user.getId());
 			parameters.apply(statement);
 			
-			statement.execute();
+			statement.executeUpdate();
 			
 			return user;
 			
@@ -154,7 +154,7 @@ public class UserDAOService implements IUserDAOService {
 			setParameterId(parameters, id);
 			parameters.apply(statement);
 			
-			statement.execute();
+			statement.executeUpdate();
 			
 			return true;
 			
